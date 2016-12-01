@@ -1,0 +1,209 @@
+// ########## Basics ##########
+author					= "FoxForce";
+onLoadName				= "Altis is ALiVE";
+onLoadMission			= "FoxForce - Altis is ALiVE v0.48b";
+loadScreen				= "img\altis_alive_load_512.paa";
+overviewText			= "FoxForce COOP";
+onLoadIntroTime			= 0;
+onLoadMissionTime		= 0;
+
+class Header
+{
+	gameType				= COOP;
+	minPlayers				= 1;
+	maxPlayers				= 33;
+	playerCountMultipleOf	= 1;
+};
+
+
+// ########## Misc ##########
+saving					= 0;
+enableTeamSwitch		= 0;
+disabledAI				= 1;
+joinUnassigned			= 1;
+enableItemsDropping		= 0;
+disableChannels[]		= {0, 2, 5, 6};
+aiKills					= 0;
+enableDebugConsole		= 1;
+allowFunctionsLog		= 0;
+allowFunctionsRecompile	= 0;
+
+
+// ########## Respawning ##########
+respawn					= 3;
+respawnDelay			= 15;
+respawnDialog			= 0;
+respawnOnStart			= 0;
+
+
+// ########## Cleanup ##########
+corpseManagerMode		= 0;
+corpseLimit				= 15;
+corpseRemovalMinTime	= 600;
+corpseRemovalMaxTime	= 900;
+
+wreckManagerMode		= 0;
+wreckLimit				= 5;
+wreckRemovalMinTime		= 600;
+wreckRemovalMaxTime		= 900;
+
+
+// ########## Includes ##########
+#include "src\ATM_airdrop\dialog.hpp"
+#include "src\CHVD\dialog.hpp"
+#include "cfg\ff7_groups.hpp"
+//#include "cfg\ff7_xeh.hpp"
+
+
+// ########## Params ##########
+class Params
+{
+	#include "cfg\mission_params.hpp"
+};
+
+
+//########## Functions ##########
+class CfgFunctions
+{
+	#include "src\CHVD\CfgFunctions.hpp"
+	//#include "src\FETT_ZeusShare\CfgFunctions.hpp"
+	#include "func\functions.hpp"
+};
+
+
+// ########## Sounds ##########
+class CfgSounds
+{
+	sounds[] = {Vent, Vent2, Para, Reveille};
+	
+	class Vent
+	{
+		name		= "Vent";
+		sound[]		= {"src\ATM_airdrop\data\Vent.ogg", db-11, 1.0};
+		titles[]	= {};
+	};
+	class Vent2
+	{
+		name		= "Vent2";
+		sound[]		= {"src\ATM_airdrop\data\Vent2.ogg", db-11, 1.0};
+		titles[]	= {};
+	};
+	class Para
+	{
+		name		= "Para";
+		sound[]		= {"src\ATM_airdrop\data\parachute.ogg", db-11, 1.0};
+		titles[]	= {};
+	};
+	class Reveille
+	{
+		name		= "Reveille";
+		sound[]		= {"snd\reveille.ogg", 1, 1};
+		titles[]	= {};
+	};
+};
+
+
+// ########## Notifications ##########
+class CfgNotifications
+{
+	class Default
+	{
+		title = ""; 			// Tile displayed as text on black background. Filled by arguments.
+		iconPicture = ""; 		// Small icon displayed in left part. Colored by "color", filled by arguments.
+		iconText = ""; 			// Short text displayed over the icon. Colored by "color", filled by arguments.
+		description = ""; 		// Brief description displayed as structured text. Colored by "color", filled by arguments.
+		color[] = {1,1,1,1}; 	// Icon and text color
+		duration = 10; 			// How many seconds will the notification be displayed
+		priority = 0; 			// Priority; higher number = more important; tasks in queue are selected by priority
+		difficulty[] = {}; 		// Required difficulty settings. All listed difficulties has to be enabled
+	};
+	class SeekDestroy
+	{
+		title = "Seek and Destroy";
+		description = "%1";
+		iconPicture = "img\icon\icon-explosion3.paa";
+		color[] = {1, 0.81, 0.06, 1};
+		duration = 10;
+		priority = 9;
+	};
+	class IntelGather
+	{
+		title = "Locate intel";
+		description = "%1";
+		iconPicture = "img\icon\icon-intel.paa";
+		color[] = {1, 0.81, 0.06, 1};
+		duration = 10;
+		priority = 9;
+	};
+	class Secure
+	{
+		title = "Secure item";
+		description = "%1";
+		iconPicture = "img\icon\icon-secure3.paa";
+		color[] = {1, 0.81, 0.06, 1};
+		duration = 10;
+		priority = 9;
+	};
+	class Rescue
+	{
+		title = "Rescue";
+		description = "%1";
+		iconPicture = "img\icon\icon-rescue1.paa";
+		color[] = {1, 0.81, 0.06, 1};
+		duration = 10;
+		priority = 9;
+	};
+	class Eliminate
+	{
+		title = "Eliminate";
+		description = "%1";
+		iconPicture = "img\icon\icon-eliminate2.paa";
+		color[] = {1, 0.81, 0.06, 1};
+		duration = 10;
+		priority = 9;
+	};
+	class Completed
+	{
+		title = "Completed";
+		description = "%1";
+		iconPicture = "img\icon\icon-completed2.paa";
+		color[] = {0.5, 0.85, 0.05, 1};
+		duration = 10;
+		priority = 9;
+	};
+	class Failed
+	{
+		title = "Failed";
+		description = "%1";
+		iconPicture = "img\icon\icon-fail.paa";
+		color[] = {1, 0.5, 0.1, 1};
+		duration = 10;
+		priority = 9;
+	};
+};
+
+
+// ########## Debriefings ##########
+class CfgDebriefing
+{
+	class alivemismatch
+	{
+		title = "ALiVE version mismatch";
+		subtitle = "";
+		description = "You are running a different version of ALiVE than the server, update and try again.";
+		pictureBackground = "";
+		picture = "KIA";
+		pictureColor[] = {0.6,0.1,0.2,1};
+	};
+};
+
+
+// ########## DebriefSections ##########
+class CfgDebriefingSections
+{
+	class aliveversion
+	{
+		title = "Required ALiVE version";
+		variable = "FF7_ALiVE_version";
+	};
+};
